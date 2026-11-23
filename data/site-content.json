@@ -364,14 +364,14 @@
     ]
   },
   "multiview": {
-    "description": "Input photographs alongside moving views of the reconstructed scenes.",
+    "description": "Camera tours of the reconstructed indoor and outdoor scenes.",
     "scenes": [
       {
         "title": "Indoor workspace",
         "video": {
-          "src": "assets/multiview/indoor-workspace.mp4",
-          "poster": "assets/multiview/indoor-workspace-poster.jpg",
-          "alt": "Input photographs and a camera tour of the reconstructed indoor workspace."
+          "src": "assets/multiview/indoor-workspace-full-floor.mp4",
+          "poster": "assets/multiview/indoor-workspace-full-floor-poster.jpg",
+          "alt": "Camera tour of the reconstructed indoor workspace covering the entire first floor."
         }
       },
       {
