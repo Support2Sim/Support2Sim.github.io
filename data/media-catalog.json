@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "title": "Support2Sim media",
+  "horizonSeconds": 10,
+  "pathBase": "site-root",
+  "metricDefinitions": {
+    "iou0": "Source-mask IoU at release, fraction in [0,1].",
+    "iou10": "Source-mask IoU after 10 seconds, fraction in [0,1].",
+    "supports": "Realized supports / intended supports, from selected Table 1 loaded and edges.",
+    "drift": "Mean object drift in millimeters, from selected Table 1 drift_mm."
+  },
+  "scenes": [
+    {
+      "id": "kitchen-cup-saucer",
+      "benchmarkId": "MK__hard_010__1",
+      "label": "Cup and saucer",
+      "dataset": "MessyKitchens",
+      "source": "assets/scenes/kitchen-cup-saucer/source.jpg",
+      "objectCount": 9,
+      "methods": [
+        {
+          "id": "support2sim",
+          "name": "Support2Sim",
+          "video": "assets/scenes/kitchen-cup-saucer/support2sim.mp4",
+          "poster": "assets/scenes/kitchen-cup-saucer/support2sim-poster.jpg",
+          "initial": "assets/scenes/kitchen-cup-saucer/support2sim-initial.jpg",
+          "metrics": {
+            "iou0": 0.7619322461306235,
+            "iou10": 0.7621339325646789,
+            "supports": {
+              "realized": 8,
+              "total": 8
+            },
+            "drift": 0.039812418211898556
+          },
+          "selectionStatus": "frozen final",
+          "qualityStatus": "PASS",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "simfoundry",
+          "name": "SimFoundry",
+          "video": "assets/scenes/kitchen-cup-saucer/simfoundry.mp4",
+          "poster": "assets/scenes/kitchen-cup-saucer/simfoundry-poster.jpg",
+          "initial": "assets/scenes/kitchen-cup-saucer/simfoundry-initial.jpg",
+          "metrics": {
+            "iou0": 0.4753996239187738,
+            "iou10": 0.4653011384693907,
+            "supports": {
+              "realized": 7,
+              "total": 8
+            },
+            "drift": 3.2400753030325586
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "pcr",
+          "name": "Physics-Constrained Real2Sim",
+          "video": "assets/scenes/kitchen-cup-saucer/pcr.mp4",
+          "poster": "assets/scenes/kitchen-cup-saucer/pcr-poster.jpg",
+          "initial": "assets/scenes/kitchen-cup-saucer/pcr-initial.jpg",
+          "metrics": {
+            "iou0": 0.6435314708826739,
+            "iou10": 0.48786057977161484,
+            "supports": {
+              "realized": 8,
+              "total": 8
+            },
+            "drift": 122.15026518129419
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "model": {
+        "path": "assets/scenes/kitchen-cup-saucer/scene.glb",
+        "src": "assets/scenes/kitchen-cup-saucer/scene.glb",
+        "poster": "assets/scenes/kitchen-cup-saucer/support2sim-poster.jpg",
+        "label": "Cup and saucer at 10 s",
+        "description": "Textured Support2Sim reconstruction at the saved 10-second endpoint. All 9 objects in this selected scene are included. Drag to orbit and scroll to zoom.",
+        "timeSeconds": 10,
+        "units": "meters",
+        "upAxis": "Y",
+        "coordinateConversion": "(x, y, z) in the saved Z-up world becomes (x, z, -y). No scaling or recentering.",
+        "objectCount": 9,
+        "bytes": 11315236
+      }
+    },
+    {
+      "id": "tabletop-bottle-drill",
+      "benchmarkId": "YCBV__000054__514",
+      "label": "Bottle and drill",
+      "dataset": "YCB-Video",
+      "source": "assets/scenes/tabletop-bottle-drill/source.jpg",
+      "objectCount": 6,
+      "methods": [
+        {
+          "id": "support2sim",
+          "name": "Support2Sim",
+          "video": "assets/scenes/tabletop-bottle-drill/support2sim.mp4",
+          "poster": "assets/scenes/tabletop-bottle-drill/support2sim-poster.jpg",
+          "initial": "assets/scenes/tabletop-bottle-drill/support2sim-initial.jpg",
+          "metrics": {
+            "iou0": 0.753673008443062,
+            "iou10": 0.7535829897791794,
+            "supports": {
+              "realized": 5,
+              "total": 5
+            },
+            "drift": 0.025625048511954976
+          },
+          "selectionStatus": "frozen final",
+          "qualityStatus": "PASS",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "simfoundry",
+          "name": "SimFoundry",
+          "video": "assets/scenes/tabletop-bottle-drill/simfoundry.mp4",
+          "poster": "assets/scenes/tabletop-bottle-drill/simfoundry-poster.jpg",
+          "initial": "assets/scenes/tabletop-bottle-drill/simfoundry-initial.jpg",
+          "metrics": {
+            "iou0": 0.4339694136737838,
+            "iou10": 0.3324252577179019,
+            "supports": {
+              "realized": 5,
+              "total": 5
+            },
+            "drift": 30.63744481777279
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "pcr",
+          "name": "Physics-Constrained Real2Sim",
+          "video": "assets/scenes/tabletop-bottle-drill/pcr.mp4",
+          "poster": "assets/scenes/tabletop-bottle-drill/pcr-poster.jpg",
+          "initial": "assets/scenes/tabletop-bottle-drill/pcr-initial.jpg",
+          "metrics": {
+            "iou0": 0.21522372188796304,
+            "iou10": 0.25910877373757846,
+            "supports": {
+              "realized": 2,
+              "total": 5
+            },
+            "drift": 623.6797227938812
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033008,
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "model": {
+        "path": "assets/scenes/tabletop-bottle-drill/scene.glb",
+        "src": "assets/scenes/tabletop-bottle-drill/scene.glb",
+        "poster": "assets/scenes/tabletop-bottle-drill/support2sim-poster.jpg",
+        "label": "Bottle and drill at 10 s",
+        "description": "Textured Support2Sim reconstruction at the saved 10-second endpoint. All 6 objects in this selected scene are included. Drag to orbit and scroll to zoom.",
+        "timeSeconds": 10,
+        "units": "meters",
+        "upAxis": "Y",
+        "coordinateConversion": "(x, y, z) in the saved Z-up world becomes (x, z, -y). No scaling or recentering.",
+        "objectCount": 6,
+        "bytes": 7045316
+      }
+    },
+    {
+      "id": "jenga-tower",
+      "benchmarkId": "Picasso__jenga_1",
+      "label": "Jenga block ring",
+      "dataset": "Picasso",
+      "source": "assets/scenes/jenga-tower/source.jpg",
+      "objectCount": 9,
+      "methods": [
+        {
+          "id": "support2sim",
+          "name": "Support2Sim",
+          "video": "assets/scenes/jenga-tower/support2sim.mp4",
+          "poster": "assets/scenes/jenga-tower/support2sim-poster.jpg",
+          "initial": "assets/scenes/jenga-tower/support2sim-initial.jpg",
+          "metrics": {
+            "iou0": 0.6027111498715966,
+            "iou10": 0.6027087407584008,
+            "supports": {
+              "realized": 14,
+              "total": 14
+            },
+            "drift": 0.02137172065566483
+          },
+          "selectionStatus": "retrospective archived earlier bundle",
+          "qualityStatus": "archived candidate; strict release QC unverified",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "simfoundry",
+          "name": "SimFoundry",
+          "video": "assets/scenes/jenga-tower/simfoundry.mp4",
+          "poster": "assets/scenes/jenga-tower/simfoundry-poster.jpg",
+          "initial": "assets/scenes/jenga-tower/simfoundry-initial.jpg",
+          "metrics": {
+            "iou0": 0.5911770185308005,
+            "iou10": 0.6208881319268713,
+            "supports": {
+              "realized": 9,
+              "total": 14
+            },
+            "drift": 2.8737539689294382
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "pcr",
+          "name": "Physics-Constrained Real2Sim",
+          "video": "assets/scenes/jenga-tower/pcr.mp4",
+          "poster": "assets/scenes/jenga-tower/pcr-poster.jpg",
+          "initial": "assets/scenes/jenga-tower/pcr-initial.jpg",
+          "metrics": {
+            "iou0": 0.2934218429064587,
+            "iou10": 0.41030098478915955,
+            "supports": {
+              "realized": 10,
+              "total": 14
+            },
+            "drift": 94.182821105938
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "model": {
+        "path": "assets/scenes/jenga-tower/scene.glb",
+        "src": "assets/scenes/jenga-tower/scene.glb",
+        "poster": "assets/scenes/jenga-tower/support2sim-poster.jpg",
+        "label": "Jenga block ring at 10 s",
+        "description": "Textured Support2Sim reconstruction at the saved 10-second endpoint. All 9 objects in this selected scene are included. Drag to orbit and scroll to zoom.",
+        "timeSeconds": 10,
+        "units": "meters",
+        "upAxis": "Y",
+        "coordinateConversion": "(x, y, z) in the saved Z-up world becomes (x, z, -y). No scaling or recentering.",
+        "objectCount": 9,
+        "bytes": 9075208
+      },
+      "note": "Selected earlier input bundle; archived candidate with strict release QC unverified."
+    },
+    {
+      "id": "office-desk",
+      "benchmarkId": "HyperSim__ai_001_003",
+      "label": "Office desk \u00b7 18 objects",
+      "dataset": "HyperSim",
+      "source": "assets/scenes/office-desk/source.jpg",
+      "objectCount": 18,
+      "methods": [
+        {
+          "id": "support2sim",
+          "name": "Support2Sim",
+          "video": "assets/scenes/office-desk/support2sim.mp4",
+          "poster": "assets/scenes/office-desk/support2sim-poster.jpg",
+          "initial": "assets/scenes/office-desk/support2sim-initial.jpg",
+          "metrics": {
+            "iou0": 0.37831800222500384,
+            "iou10": 0.37245378497651144,
+            "supports": {
+              "realized": 17,
+              "total": 17
+            },
+            "drift": 28.606475583938437
+          },
+          "selectionStatus": "retrospective archived scope",
+          "qualityStatus": "preprocessing FAIL; archived review result",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "simfoundry",
+          "name": "SimFoundry",
+          "video": "assets/scenes/office-desk/simfoundry.mp4",
+          "poster": "assets/scenes/office-desk/simfoundry-poster.jpg",
+          "initial": "assets/scenes/office-desk/simfoundry-initial.jpg",
+          "metrics": {
+            "iou0": 0.1412075517587198,
+            "iou10": 0.14162957120074876,
+            "supports": {
+              "realized": 7,
+              "total": 17
+            },
+            "drift": 96.23904933650122
+          },
+          "selectionStatus": "final release",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        },
+        {
+          "id": "pcr",
+          "name": "Physics-Constrained Real2Sim",
+          "video": "assets/scenes/office-desk/pcr.mp4",
+          "poster": "assets/scenes/office-desk/pcr-poster.jpg",
+          "initial": "assets/scenes/office-desk/pcr-initial.jpg",
+          "metrics": {
+            "iou0": 0.5761779066172596,
+            "iou10": 0.11901153260841105,
+            "supports": {
+              "realized": 9,
+              "total": 17
+            },
+            "drift": 5306.848747368207
+          },
+          "selectionStatus": "partial checkpoint",
+          "durationSeconds": 10.033333,
+          "width": 960,
+          "height": 720
+        }
+      ],
+      "note": "Selected archived 18-object office scope. Support2Sim preprocessing failed in this archived review result; PCR uses the selected partial checkpoint."
+    }
+  ],
+  "policyTasks": [
+    {
+      "id": "banana-on-box",
+      "label": "Place banana on Cheez-It box",
+      "type": "image",
+      "path": "assets/policy/banana-on-box-strip.png",
+      "width": 4960,
+      "height": 1080,
+      "src": "assets/policy/banana-on-box-strip.png",
+      "frames": [
+        {
+          "label": "Source",
+          "path": "assets/policy/banana-on-box-source.png"
+        },
+        {
+          "label": "Initial",
+          "path": "assets/policy/banana-on-box-initial.png"
+        },
+        {
+          "label": "Grasp",
+          "path": "assets/policy/banana-on-box-grasp.png"
+        },
+        {
+          "label": "Release",
+          "path": "assets/policy/banana-on-box-release.png"
+        }
+      ],
+      "description": "Saved source, initial, grasp, and release images. No video was available in the supplied task folders."
+    },
+    {
+      "id": "stack-jello-on-sugar",
+      "label": "Stack Jell-O box on sugar box",
+      "type": "image",
+      "path": "assets/policy/stack-jello-on-sugar-strip.png",
+      "width": 4480,
+      "height": 960,
+      "src": "assets/policy/stack-jello-on-sugar-strip.png",
+      "frames": [
+        {
+          "label": "Source",
+          "path": "assets/policy/stack-jello-on-sugar-source.png"
+        },
+        {
+          "label": "Initial",
+          "path": "assets/policy/stack-jello-on-sugar-initial.png"
+        },
+        {
+          "label": "Grasp",
+          "path": "assets/policy/stack-jello-on-sugar-grasp.png"
+        },
+        {
+          "label": "Release",
+          "path": "assets/policy/stack-jello-on-sugar-release.png"
+        }
+      ],
+      "description": "Saved source, initial, grasp, and release images. No video was available in the supplied task folders."
+    },
+    {
+      "id": "marker-around-can",
+      "label": "Move marker to far side of soup can",
+      "type": "image",
+      "path": "assets/policy/marker-around-can-strip.png",
+      "width": 4960,
+      "height": 1080,
+      "src": "assets/policy/marker-around-can-strip.png",
+      "frames": [
+        {
+          "label": "Source",
+          "path": "assets/policy/marker-around-can-source.png"
+        },
+        {
+          "label": "Initial",
+          "path": "assets/policy/marker-around-can-initial.png"
+        },
+        {
+          "label": "Grasp",
+          "path": "assets/policy/marker-around-can-grasp.png"
+        },
+        {
+          "label": "Release",
+          "path": "assets/policy/marker-around-can-release.png"
+        }
+      ],
+      "description": "Saved source, initial, grasp, and release images. No video was available in the supplied task folders."
+    },
+    {
+      "id": "sugar-from-bowl",
+      "label": "Move sugar box from bowl to table",
+      "type": "image",
+      "path": "assets/policy/sugar-from-bowl-strip.png",
+      "width": 4960,
+      "height": 1080,
+      "src": "assets/policy/sugar-from-bowl-strip.png",
+      "frames": [
+        {
+          "label": "Source",
+          "path": "assets/policy/sugar-from-bowl-source.png"
+        },
+        {
+          "label": "Initial",
+          "path": "assets/policy/sugar-from-bowl-initial.png"
+        },
+        {
+          "label": "Grasp",
+          "path": "assets/policy/sugar-from-bowl-grasp.png"
+        },
+        {
+          "label": "Release",
+          "path": "assets/policy/sugar-from-bowl-release.png"
+        }
+      ],
+      "description": "Saved source, initial, grasp, and release images. No video was available in the supplied task folders."
+    }
+  ],
+  "overview": {
+    "type": "image",
+    "path": "assets/figures/method-overview.png",
+    "src": "assets/figures/method-overview.png",
+    "label": "Method overview",
+    "alt": "Support2Sim reconstructs the scene and support graph, constructs a contact-guided layout, and refines and validates the result."
+  },
+  "preparation": {
+    "complete": true,
+    "readyScenes": 4,
+    "plannedScenes": 4
+  }
+}

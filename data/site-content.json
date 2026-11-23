@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "subtitle": "A single image. A simulation-ready scene.",
+  "summary": "Support2Sim reconstructs simulation-ready scenes from a single RGB image. A support graph guides pose initialization, and short physics rollouts guide coarse-to-fine refinement. The system balances source fidelity, realization of inferred supports, and stability within bounded search budgets.",
+  "hero": {
+    "source": {
+      "src": "assets/scenes/kitchen-cup-saucer/source.jpg",
+      "alt": "Source photograph: Cup and saucer."
+    },
+    "simulation": {
+      "method": "Support2Sim",
+      "src": "assets/scenes/kitchen-cup-saucer/support2sim.mp4",
+      "poster": "assets/scenes/kitchen-cup-saucer/support2sim-poster.jpg",
+      "alt": "Support2Sim: Cup and saucer, saved 10-second simulation.",
+      "type": "video"
+    },
+    "caption": "Source image and a matched-camera, 10-second physics rollout.",
+    "autoplay": false
+  },
+  "results": {
+    "intro": "50 scenes across MessyKitchens, YCB-Video, Picasso, and HyperSim.",
+    "metrics": [
+      {
+        "label": "Source-mask IoU",
+        "baseline": "30.3",
+        "value": "51.7",
+        "unit": "%",
+        "detail": "After 10 seconds",
+        "gain": "+21.4 percentage points"
+      },
+      {
+        "label": "Intended supports",
+        "baseline": "73.2",
+        "value": "87.1",
+        "unit": "%",
+        "detail": "Realization rate"
+      },
+      {
+        "label": "Mean object drift",
+        "baseline": "79.6",
+        "value": "45.3",
+        "unit": " mm"
+      }
+    ],
+    "note": "All methods are evaluated with the same reference camera, source masks, intended-support edges, and 10-second horizon. Support realization measures load-bearing object pairs in the inferred graph; it does not measure recovery of ground-truth contact locations."
+  },
+  "rollouts": {
+    "description": "Compare synchronized saved rollouts with the source photograph. Each method starts at release and runs for 10 seconds.",
+    "note": "Representative examples from the 50-scene evaluation. IoU and drift are averaged over the evaluated objects; support counts use the shared reference graph. PCR denotes Physics-Constrained Real2Sim.",
+    "scenes": [
+      {
+        "id": "kitchen-cup-saucer",
+        "title": "Cup and saucer",
+        "dataset": "MessyKitchens",
+        "source": {
+          "src": "assets/scenes/kitchen-cup-saucer/source.jpg",
+          "alt": "Source photograph of Cup and saucer from MessyKitchens."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/kitchen-cup-saucer/support2sim.mp4",
+            "poster": "assets/scenes/kitchen-cup-saucer/support2sim-poster.jpg",
+            "alt": "Support2Sim: Cup and saucer, saved 10-second simulation.",
+            "caption": "Final IoU 76.2% \u00b7 Supports 8/8 \u00b7 Drift 0.04 mm"
+          },
+          {
+            "method": "SimFoundry",
+            "src": "assets/scenes/kitchen-cup-saucer/simfoundry.mp4",
+            "poster": "assets/scenes/kitchen-cup-saucer/simfoundry-poster.jpg",
+            "alt": "SimFoundry: Cup and saucer, saved 10-second simulation.",
+            "caption": "Final IoU 46.5% \u00b7 Supports 7/8 \u00b7 Drift 3.24 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/kitchen-cup-saucer/pcr.mp4",
+            "poster": "assets/scenes/kitchen-cup-saucer/pcr-poster.jpg",
+            "alt": "PCR: Cup and saucer, saved 10-second simulation.",
+            "caption": "Final IoU 48.8% \u00b7 Supports 8/8 \u00b7 Drift 122.15 mm"
+          }
+        ]
+      },
+      {
+        "id": "spoon-two-dishes",
+        "title": "Spoon spanning two dishes",
+        "dataset": "MessyKitchens",
+        "source": {
+          "src": "assets/scenes/spoon-two-dishes/source.jpg",
+          "alt": "Source photograph of spoon spanning two dishes from MessyKitchens."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/spoon-two-dishes/support2sim.mp4",
+            "poster": "assets/scenes/spoon-two-dishes/support2sim-poster.jpg",
+            "alt": "Support2Sim: Spoon spanning two dishes, saved 10-second simulation.",
+            "caption": "Final IoU 84.1% \u00b7 Supports 9/9 \u00b7 Drift 0.07 mm"
+          },
+          {
+            "method": "SimFoundry",
+            "src": "assets/scenes/spoon-two-dishes/simfoundry.mp4",
+            "poster": "assets/scenes/spoon-two-dishes/simfoundry-poster.jpg",
+            "alt": "SimFoundry: Spoon spanning two dishes, saved 10-second simulation.",
+            "caption": "Final IoU 54.8% \u00b7 Supports 8/9 \u00b7 Drift 8.54 mm"
+          },
+          {
+            "method": "Picasso",
+            "src": "assets/scenes/spoon-two-dishes/picasso.mp4",
+            "poster": "assets/scenes/spoon-two-dishes/picasso-poster.jpg",
+            "alt": "Picasso: Spoon spanning two dishes, saved 10-second simulation.",
+            "caption": "Final IoU 20.3% \u00b7 Supports 7/9 \u00b7 Drift 1,363.30 mm"
+          }
+        ]
+      },
+      {
+        "id": "tabletop-bottle-drill",
+        "title": "Bottle and drill",
+        "dataset": "YCB-Video",
+        "source": {
+          "src": "assets/scenes/tabletop-bottle-drill/source.jpg",
+          "alt": "Source photograph of Bottle and drill from YCB-Video."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/tabletop-bottle-drill/support2sim.mp4",
+            "poster": "assets/scenes/tabletop-bottle-drill/support2sim-poster.jpg",
+            "alt": "Support2Sim: Bottle and drill, saved 10-second simulation.",
+            "caption": "Final IoU 75.4% \u00b7 Supports 5/5 \u00b7 Drift 0.03 mm"
+          },
+          {
+            "method": "SimFoundry",
+            "src": "assets/scenes/tabletop-bottle-drill/simfoundry.mp4",
+            "poster": "assets/scenes/tabletop-bottle-drill/simfoundry-poster.jpg",
+            "alt": "SimFoundry: Bottle and drill, saved 10-second simulation.",
+            "caption": "Final IoU 33.2% \u00b7 Supports 5/5 \u00b7 Drift 30.64 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/tabletop-bottle-drill/pcr.mp4",
+            "poster": "assets/scenes/tabletop-bottle-drill/pcr-poster.jpg",
+            "alt": "PCR: Bottle and drill, saved 10-second simulation.",
+            "caption": "Final IoU 25.9% \u00b7 Supports 2/5 \u00b7 Drift 623.68 mm"
+          }
+        ]
+      },
+      {
+        "id": "jenga-tower",
+        "title": "Jenga block ring",
+        "dataset": "Picasso",
+        "source": {
+          "src": "assets/scenes/jenga-tower/source.jpg",
+          "alt": "Source photograph of Jenga block ring from Picasso."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/jenga-tower/support2sim.mp4",
+            "poster": "assets/scenes/jenga-tower/support2sim-poster.jpg",
+            "alt": "Support2Sim: Jenga block ring, saved 10-second simulation.",
+            "caption": "Final IoU 60.3% \u00b7 Supports 14/14 \u00b7 Drift 0.02 mm"
+          },
+          {
+            "method": "SimFoundry",
+            "src": "assets/scenes/jenga-tower/simfoundry.mp4",
+            "poster": "assets/scenes/jenga-tower/simfoundry-poster.jpg",
+            "alt": "SimFoundry: Jenga block ring, saved 10-second simulation.",
+            "caption": "Final IoU 62.1% \u00b7 Supports 9/14 \u00b7 Drift 2.87 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/jenga-tower/pcr.mp4",
+            "poster": "assets/scenes/jenga-tower/pcr-poster.jpg",
+            "alt": "PCR: Jenga block ring, saved 10-second simulation.",
+            "caption": "Final IoU 41.0% \u00b7 Supports 10/14 \u00b7 Drift 94.18 mm"
+          }
+        ]
+      },
+      {
+        "id": "office-desk",
+        "title": "Office desk \u00b7 18 objects",
+        "dataset": "HyperSim",
+        "source": {
+          "src": "assets/scenes/office-desk/source.jpg",
+          "alt": "Source photograph of Office desk \u00b7 18 objects from HyperSim."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/office-desk/support2sim.mp4",
+            "poster": "assets/scenes/office-desk/support2sim-poster.jpg",
+            "alt": "Support2Sim: Office desk \u00b7 18 objects, saved 10-second simulation.",
+            "caption": "Final IoU 37.2% \u00b7 Supports 17/17 \u00b7 Drift 28.61 mm"
+          },
+          {
+            "method": "SimFoundry",
+            "src": "assets/scenes/office-desk/simfoundry.mp4",
+            "poster": "assets/scenes/office-desk/simfoundry-poster.jpg",
+            "alt": "SimFoundry: Office desk \u00b7 18 objects, saved 10-second simulation.",
+            "caption": "Final IoU 14.2% \u00b7 Supports 7/17 \u00b7 Drift 96.24 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/office-desk/pcr.mp4",
+            "poster": "assets/scenes/office-desk/pcr-poster.jpg",
+            "alt": "PCR: Office desk \u00b7 18 objects, saved 10-second simulation.",
+            "caption": "Final IoU 11.9% \u00b7 Supports 9/17 \u00b7 Drift 5,306.85 mm"
+          }
+        ]
+      },
+      {
+        "id": "living-room",
+        "title": "Living room",
+        "dataset": "HyperSim",
+        "source": {
+          "src": "assets/scenes/living-room/source.jpg",
+          "alt": "Source photograph of living room from HyperSim."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/living-room/support2sim.mp4",
+            "poster": "assets/scenes/living-room/support2sim-poster.jpg",
+            "alt": "Support2Sim: Living room, saved 10-second simulation.",
+            "caption": "Final IoU 42.2% \u00b7 Supports 12/12 \u00b7 Drift 21.05 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/living-room/pcr.mp4",
+            "poster": "assets/scenes/living-room/pcr-poster.jpg",
+            "alt": "PCR: Living room, saved 10-second simulation.",
+            "caption": "Final IoU 37.1% \u00b7 Supports 11/12 \u00b7 Drift 3,568.30 mm"
+          }
+        ]
+      },
+      {
+        "id": "kitchen",
+        "title": "Kitchen",
+        "dataset": "HyperSim",
+        "source": {
+          "src": "assets/scenes/kitchen/source.jpg",
+          "alt": "Source photograph of kitchen from HyperSim."
+        },
+        "videos": [
+          {
+            "method": "Support2Sim",
+            "src": "assets/scenes/kitchen/support2sim.mp4",
+            "poster": "assets/scenes/kitchen/support2sim-poster.jpg",
+            "alt": "Support2Sim: Kitchen, saved 10-second simulation.",
+            "caption": "Final IoU 16.4% \u00b7 Supports 17/21 \u00b7 Drift 66.59 mm"
+          },
+          {
+            "method": "PCR",
+            "src": "assets/scenes/kitchen/pcr.mp4",
+            "poster": "assets/scenes/kitchen/pcr-poster.jpg",
+            "alt": "PCR: Kitchen, saved 10-second simulation.",
+            "caption": "Final IoU 14.7% \u00b7 Supports 8/21 \u00b7 Drift 3,048.29 mm"
+          }
+        ]
+      }
+    ]
+  },
+  "viewer": {
+    "description": "Explore textured scenes at their saved 10-second endpoints. Drag to orbit, scroll or pinch to zoom, and reset the camera at any time.",
+    "models": [
+      {
+        "id": "kitchen-cup-saucer",
+        "label": "Cup and saucer",
+        "dataset": "MessyKitchens",
+        "src": "assets/scenes/kitchen-cup-saucer/scene.glb",
+        "poster": "assets/scenes/kitchen-cup-saucer/support2sim-poster.jpg",
+        "alt": "Textured 3D reconstruction of Cup and saucer.",
+        "cameraOrbit": "0deg 40deg 95%",
+        "source": {
+          "src": "assets/scenes/kitchen-cup-saucer/source.jpg",
+          "alt": "Original source view of Cup and saucer."
+        },
+        "caption": "9 reconstructed objects at the saved 10-second endpoint. This is an interactive view of the recorded scene, not a live physics simulation."
+      },
+      {
+        "id": "tabletop-bottle-drill",
+        "label": "Bottle and drill",
+        "dataset": "YCB-Video",
+        "src": "assets/scenes/tabletop-bottle-drill/scene.glb",
+        "poster": "assets/scenes/tabletop-bottle-drill/support2sim-poster.jpg",
+        "alt": "Textured 3D reconstruction of Bottle and drill.",
+        "cameraOrbit": "0deg 40deg 95%",
+        "source": {
+          "src": "assets/scenes/tabletop-bottle-drill/source.jpg",
+          "alt": "Original source view of Bottle and drill."
+        },
+        "caption": "6 reconstructed objects at the saved 10-second endpoint. This is an interactive view of the recorded scene, not a live physics simulation."
+      },
+      {
+        "id": "jenga-tower",
+        "label": "Jenga block ring",
+        "dataset": "Picasso",
+        "src": "assets/scenes/jenga-tower/scene.glb",
+        "poster": "assets/scenes/jenga-tower/support2sim-poster.jpg",
+        "alt": "Textured 3D reconstruction of Jenga block ring.",
+        "cameraOrbit": "0deg 40deg 95%",
+        "source": {
+          "src": "assets/scenes/jenga-tower/source.jpg",
+          "alt": "Original source view of Jenga block ring."
+        },
+        "caption": "9 reconstructed objects at the saved 10-second endpoint. This is an interactive view of the recorded scene, not a live physics simulation."
+      }
+    ]
+  },
+  "policy": {
+    "summary": "State-based Franka Panda policies trained with behavior cloning and DART noise injection (BC + DART) in reconstructed MuJoCo scenes.",
+    "meanSuccess": "91.0%",
+    "metricLabel": "mean task success",
+    "note": "Four tasks, with 3,000 scripted-expert demonstrations and 128 held-out randomized starts per task. Scenes use task-specific robot setup.",
+    "tasks": [
+      {
+        "title": "Place banana on Cheez-It box",
+        "video": {
+          "src": "assets/policy/banana-on-box-rollout.mp4",
+          "poster": "assets/policy/banana-on-box-poster.jpg",
+          "alt": "A Franka Panda picks up a banana and places it on a Cheez-It box."
+        },
+        "image": {
+          "src": "assets/policy/banana-on-box-strip.png",
+          "alt": "Place banana on Cheez-It box. Source, initial state, grasp, and release."
+        }
+      },
+      {
+        "title": "Stack Jell-O box on sugar box",
+        "video": {
+          "src": "assets/policy/stack-jello-on-sugar-rollout.mp4",
+          "poster": "assets/policy/stack-jello-on-sugar-poster.jpg",
+          "alt": "A Franka Panda lifts a Jell-O box and stacks it on a sugar box."
+        },
+        "image": {
+          "src": "assets/policy/stack-jello-on-sugar-strip.png",
+          "alt": "Stack Jell-O box on sugar box. Source, initial state, grasp, and release."
+        }
+      },
+      {
+        "title": "Move marker to far side of soup can",
+        "video": {
+          "src": "assets/policy/marker-around-can-rollout.mp4",
+          "poster": "assets/policy/marker-around-can-poster.jpg",
+          "alt": "A Franka Panda picks up a marker and moves it to the far side of a soup can."
+        },
+        "image": {
+          "src": "assets/policy/marker-around-can-strip.png",
+          "alt": "Move marker to far side of soup can. Source, initial state, grasp, and release."
+        }
+      },
+      {
+        "title": "Move sugar box from bowl to table",
+        "video": {
+          "src": "assets/policy/sugar-from-bowl-rollout.mp4",
+          "poster": "assets/policy/sugar-from-bowl-poster.jpg",
+          "alt": "A Franka Panda lifts a sugar box out of a bowl and places it on the table."
+        },
+        "image": {
+          "src": "assets/policy/sugar-from-bowl-strip.png",
+          "alt": "Move sugar box from bowl to table. Source, initial state, grasp, and release."
+        }
+      }
+    ]
+  },
+  "multiview": {
+    "description": "Input photographs alongside moving views of the reconstructed scenes.",
+    "scenes": [
+      {
+        "title": "Indoor workspace",
+        "video": {
+          "src": "assets/multiview/indoor-workspace.mp4",
+          "poster": "assets/multiview/indoor-workspace-poster.jpg",
+          "alt": "Input photographs and a camera tour of the reconstructed indoor workspace."
+        }
+      },
+      {
+        "title": "Outdoor seating",
+        "video": {
+          "src": "assets/multiview/outdoor-seating.mp4",
+          "poster": "assets/multiview/outdoor-seating-poster.jpg",
+          "alt": "Input photographs and a camera tour of the reconstructed outdoor seating."
+        }
+      }
+    ]
+  },
+  "method": {
+    "description": "The support graph connects perception to graph-guided seating, contact-guided pose initialization, and coarse-to-fine refinement.",
+    "image": {
+      "src": "assets/figures/method-overview.png",
+      "alt": "Support2Sim reconstructs the scene and support graph, constructs a contact-guided layout, and refines and validates the result."
+    },
+    "steps": [
+      {
+        "title": "Reconstruct the scene",
+        "description": "Infer object inventories, masks, depth, geometry, and support relationships from the source image."
+      },
+      {
+        "title": "Construct the layout",
+        "description": "Align gravity, seat supported objects, and rank contact-guided pose candidates by source-image agreement."
+      },
+      {
+        "title": "Refine with rollouts",
+        "description": "Prioritize supported objects and evaluate pose updates at progressively finer translation and rotation scales."
+      }
+    ]
+  }
+}

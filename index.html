@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Support2Sim: Visually Faithful Real2Sim with Stable Object Supports. From one image to a scene that holds together.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' blob:; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Support2Sim: Visually Faithful Real2Sim with Stable Object Supports</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#main" aria-label="Support2Sim, top of page">Support<span>2</span>Sim</a>
+      <nav aria-label="Page sections">
+        <a href="#project-video">Video</a>
+        <a href="#results">Results</a>
+        <a href="#rollouts" data-nav="rollouts" hidden>Rollouts</a>
+        <a href="#scenes" data-nav="scenes" hidden>3D scenes</a>
+        <a href="#policy" data-nav="policy" hidden>Policy</a>
+        <a href="#multiview" data-nav="multiview" hidden>Multiview</a>
+        <a href="#method" data-nav="method" hidden>Method</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero page-width" aria-labelledby="hero-title">
+      <p class="eyebrow">Single-image real-to-sim</p>
+      <h1 id="hero-title"><span class="title-name">Support<span class="title-two">2</span>Sim<span class="sr-only">:</span></span><span class="title-description">Visually Faithful Real2Sim<br class="desktop-break"> with Stable Object Supports</span></h1>
+      <p class="hero-subtitle" id="hero-subtitle">From one image to a scene that holds together.</p>
+      <figure class="project-video" id="project-video" aria-label="Project video">
+        <div class="project-video-stage">
+          <video id="project-video-player" controls playsinline preload="none"
+                 poster="assets/video/project-poster.jpg" aria-label="Support2Sim project video">
+            <source src="assets/video/Support2Sim_video.mp4" type="video/mp4">
+            <a href="assets/video/Support2Sim_video.mp4">Open the project video</a>
+          </video>
+          <button class="project-video-launch" id="project-video-launch" type="button" hidden>
+            <span class="project-video-pill">
+              <span class="project-video-play-icon" aria-hidden="true"></span>
+              Play project video
+              <span class="project-video-duration">3:38</span>
+            </span>
+          </button>
+        </div>
+        <figcaption class="figure-caption" id="project-video-fallback" hidden aria-live="polite">
+          <a href="assets/video/Support2Sim_video.mp4">Open the MP4 directly</a>
+        </figcaption>
+      </figure>
+      <div class="hero-media" id="hero-media" hidden></div>
+    </section>
+
+    <section class="summary page-width" aria-label="System summary">
+      <p class="summary-lead">Appearance is only<br class="desktop-break"> part of the scene.</p>
+      <p id="system-summary">Support2Sim reconstructs a simulation scene from a single image, combining visual reconstruction with stable object supports. We evaluate source fidelity, support realization, and scene stability across 50 scenes from four datasets.</p>
+    </section>
+
+    <section class="section page-width" id="results" aria-labelledby="results-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Evaluation</p><h2 id="results-title">How well does the scene hold together?</h2></div>
+        <p class="section-intro" id="results-intro">50 scenes. Four datasets.<br>Visual fidelity, realized supports, and stability after release.</p>
+      </div>
+      <table class="metrics" id="results-metrics" aria-label="50-scene comparison with SimFoundry">
+        <colgroup><col class="metric-label-col"><col span="2"></colgroup>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">Metric</span></th>
+            <th scope="col">SimFoundry<span class="metric-detail">Strongest baseline</span></th>
+            <th scope="col" class="metric-primary">Support2Sim</th>
+          </tr>
+        </thead>
+        <tbody id="results-metric-rows">
+          <tr>
+            <th scope="row">Source-mask IoU<span class="metric-detail">After 10 seconds</span></th>
+            <td><span class="metric-value">30.3<span class="metric-unit">%</span></span></td>
+            <td class="metric-primary"><span class="metric-value">51.7<span class="metric-unit">%</span></span><span class="metric-gain">+21.4 percentage points</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Intended supports<span class="metric-detail">Realization rate</span></th>
+            <td><span class="metric-value">73.2<span class="metric-unit">%</span></span></td>
+            <td class="metric-primary"><span class="metric-value">87.1<span class="metric-unit">%</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Mean object drift</th>
+            <td><span class="metric-value">79.6<span class="metric-unit"> mm</span></span></td>
+            <td class="metric-primary"><span class="metric-value">45.3<span class="metric-unit"> mm</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="section-note" id="results-note" hidden></p>
+      <div id="results-media" class="results-media" hidden></div>
+    </section>
+
+    <section class="section section-tinted" id="rollouts" aria-labelledby="rollouts-title" hidden>
+      <div class="page-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">Saved simulation rollouts</p><h2 id="rollouts-title">The same scene.<br>Seen through time.</h2></div>
+          <p class="section-intro" id="rollouts-description">Compare saved rollouts beside the source RGB image. Playback and seeking are linked across the visible methods.</p>
+        </div>
+        <div class="explorer-toolbar">
+          <div class="filter-group" id="dataset-filters" role="group" aria-label="Filter rollout scenes by dataset"></div>
+          <div class="select-field"><label for="rollout-select">Scene</label><select id="rollout-select"></select></div>
+        </div>
+        <div class="scene-heading"><h3 id="rollout-title"></h3><p class="scene-meta" id="rollout-dataset"></p></div>
+        <div class="rollout-grid" id="rollout-grid"></div>
+        <div class="playback-bar" id="playback-bar">
+          <div class="playback-buttons"><button class="button button-primary" id="rollout-play" type="button">Play all</button><button class="button" id="rollout-reset" type="button">Reset</button></div>
+          <div class="timeline"><label class="sr-only" for="rollout-time">Rollout time in seconds</label><input type="range" id="rollout-time" min="0" max="0" value="0" step="0.01" disabled><output id="rollout-clock" for="rollout-time">0.0 s</output></div>
+        </div>
+        <p class="interaction-status" id="rollout-status" role="status" aria-live="polite"></p>
+        <p class="section-note" id="rollouts-note" hidden></p>
+      </div>
+    </section>
+
+    <section class="section page-width" id="scenes" aria-labelledby="scenes-title" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">Interactive reconstructions</p><h2 id="scenes-title">A scene, from every angle.</h2></div>
+        <p class="section-intro" id="viewer-description">Inspect the textured reconstruction in 3D, with the original image alongside. Choose a scene, then load its interactive model.</p>
+      </div>
+      <div class="viewer-toolbar"><div class="select-field"><label for="model-select">Scene model</label><select id="model-select"></select></div><p class="scene-meta" id="model-dataset"></p></div>
+      <div class="viewer-grid" id="viewer-grid">
+        <div id="model-source"></div>
+        <figure class="media-figure model-figure">
+          <figcaption class="media-heading"><span class="media-label">Textured reconstruction</span><span class="method-label">Support2Sim</span></figcaption>
+          <div class="model-stage" id="model-stage">
+            <img id="model-poster" class="model-poster" alt="" decoding="async" loading="lazy">
+            <div class="model-load-overlay" id="model-load-overlay"><button class="button button-primary" type="button" id="model-load" aria-describedby="model-help">Load interactive scene</button></div>
+          </div>
+        </figure>
+      </div>
+      <div class="model-controls" id="model-controls" role="group" aria-label="3D scene camera controls" hidden>
+        <button class="button" type="button" data-camera="left">Rotate left</button><button class="button" type="button" data-camera="right">Rotate right</button><button class="button" type="button" data-camera="in">Zoom in</button><button class="button" type="button" data-camera="out">Zoom out</button><button class="button" type="button" data-camera="reset">Reset view</button>
+      </div>
+      <p id="model-help" class="interaction-help">After loading, drag to orbit and pinch to zoom. Keyboard: focus the scene and use the arrow keys, or use the camera buttons below it.</p>
+      <p id="model-status" class="interaction-status" role="status" aria-live="polite"></p>
+      <p id="model-caption" class="figure-caption" hidden></p>
+    </section>
+
+    <section class="section section-tinted" id="policy" aria-labelledby="policy-title" hidden>
+      <div class="page-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">Applications</p><h2 id="policy-title">Policy learning</h2></div>
+          <div><p class="policy-stat" id="policy-stat" hidden></p><p class="section-intro" id="policy-summary">Policy learning in reconstructed simulation scenes.</p></div>
+        </div>
+        <div class="application-grid" id="policy-grid"></div>
+        <p class="section-note" id="policy-note" hidden></p>
+      </div>
+    </section>
+
+    <section class="section page-width" id="multiview" aria-labelledby="multiview-title" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">Applications</p><h2 id="multiview-title">Multiview reconstruction</h2></div>
+        <p class="section-intro" id="multiview-description" hidden></p>
+      </div>
+      <div class="application-grid multiview-grid" id="multiview-grid"></div>
+    </section>
+
+    <section class="section section-tinted" id="method" aria-labelledby="method-title" hidden>
+      <div class="page-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">Method overview</p><h2 id="method-title">Reconstruct appearance.<br>Realize object supports.</h2></div>
+          <p class="section-intro" id="method-description" hidden></p>
+        </div>
+        <div id="method-image"></div>
+        <div class="method-steps" id="method-steps" hidden></div>
+      </div>
+    </section>
+    <noscript><p class="page-width noscript-note">The results above are available without JavaScript. Enable JavaScript to load the local media collection, compare rollouts, and explore the 3D scenes.</p></noscript>
+  </main>
+
+  <footer class="site-footer page-width"><span class="footer-brand">Support2Sim</span><p>Visually Faithful Real2Sim with Stable Object Supports</p><a href="#main">Back to top</a></footer>
+</body>
+</html>
