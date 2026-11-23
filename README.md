@@ -39,27 +39,21 @@ Use a JSON object with `schemaVersion: 1`. Every top-level content section is op
   },
   "results": {
     "intro": "50 scenes. Four datasets. Visual fidelity, realized supports, and stability after release.",
-    "metrics": [
+    "benchmark": [
       {
-        "label": "Source-mask IoU",
-        "baseline": "30.3",
-        "value": "51.7",
-        "unit": "%",
-        "detail": "After 10 seconds",
-        "gain": "+21.4 percentage points"
+        "method": "SimFoundry",
+        "iou": "30.3%",
+        "supports": "73.2%",
+        "driftMm": "79.6",
+        "detail": "Strongest baseline"
       },
       {
-        "label": "Intended supports",
-        "baseline": "73.2",
-        "value": "87.1",
-        "unit": "%",
-        "detail": "Realization rate"
-      },
-      {
-        "label": "Mean object drift",
-        "baseline": "79.6",
-        "value": "45.3",
-        "unit": " mm"
+        "method": "Support2Sim",
+        "iou": "51.7%",
+        "supports": "87.1%",
+        "driftMm": "45.3",
+        "primary": true,
+        "iouNote": "+21.4 pp vs. SimFoundry"
       }
     ],
     "note": "Optional measurement protocol or aggregation note, taken from the evaluated results.",
@@ -172,7 +166,7 @@ Use a JSON object with `schemaVersion: 1`. Every top-level content section is op
 | --- | --- | --- |
 | `subtitle`, `summary` | No | Override the corresponding static text; title and branding stay fixed. Plain text only. |
 | `hero` | Both `source.src` and `simulation.src` | Two large adjacent panels. Source is an image; simulation can be an image or video. `autoplay: true` applies only to this video, only while reduced motion is off. Default is no autoplay. |
-| `results.metrics[]` | `label`, `baseline`, `value` as strings | `baseline` is SimFoundry and `value` is Support2Sim. Optional `unit`, `detail`, and Support2Sim `gain` text. Omit `metrics` to use the static comparison table. Use `[]` to hide the table. |
+| `results.benchmark[]` | `method`, `iou`, `supports`, `driftMm` as strings | Use one row per method. Include percentage signs with IoU and support rates. Optional fields are `detail`, `iouNote`, and `primary: true` for the highlighted row. Omit `benchmark` to use the static table. Use `[]` to hide it. |
 | `results.source`, `results.simulation` | Both `src` values | Optional large RGB/result pair below the measured results; same media format as the hero. |
 | `rollouts.scenes[]` | `source.src`, at least one valid `videos[]` entry | Use unique stable `id` values, readable `title`, and consistent `dataset` names. Dataset buttons are generated from available scenes and hidden if only one dataset is present. |
 | `rollouts.scenes[].videos[]` | `src`, `method` | Allowed method labels: `Support2Sim`, `SimFoundry`, `PCR`, `Picasso`, `SAM3D`, `SAM3D+FP`. Other labels are omitted. Array order controls panel order; put Support2Sim first. Three methods per representative are supported, as are other available counts. |

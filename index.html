@@ -64,30 +64,52 @@
         <div><p class="eyebrow">Evaluation</p><h2 id="results-title">How well does the scene hold together?</h2></div>
         <p class="section-intro" id="results-intro">50 scenes. Four datasets.<br>Visual fidelity, realized supports, and stability after release.</p>
       </div>
-      <table class="metrics" id="results-metrics" aria-label="50-scene comparison with SimFoundry">
-        <colgroup><col class="metric-label-col"><col span="2"></colgroup>
+      <table class="metrics" id="results-metrics" aria-label="50-scene benchmark comparison">
+        <colgroup><col class="metric-label-col"><col span="3"></colgroup>
         <thead>
           <tr>
-            <th scope="col"><span class="sr-only">Metric</span></th>
-            <th scope="col">SimFoundry<span class="metric-detail">Strongest baseline</span></th>
-            <th scope="col" class="metric-primary">Support2Sim</th>
+            <th scope="col">Method</th>
+            <th scope="col">Source-mask IoU<span class="metric-detail">After 10 seconds</span></th>
+            <th scope="col">Intended supports<span class="metric-detail">Realization rate</span></th>
+            <th scope="col">Mean object drift<span class="metric-detail">mm</span></th>
           </tr>
         </thead>
         <tbody id="results-metric-rows">
           <tr>
-            <th scope="row">Source-mask IoU<span class="metric-detail">After 10 seconds</span></th>
-            <td><span class="metric-value">30.3<span class="metric-unit">%</span></span></td>
-            <td class="metric-primary"><span class="metric-value">51.7<span class="metric-unit">%</span></span><span class="metric-gain">+21.4 percentage points</span></td>
+            <th scope="row">SAM3D</th>
+            <td>18.0%</td>
+            <td>42.1%</td>
+            <td>1,417.5</td>
           </tr>
           <tr>
-            <th scope="row">Intended supports<span class="metric-detail">Realization rate</span></th>
-            <td><span class="metric-value">73.2<span class="metric-unit">%</span></span></td>
-            <td class="metric-primary"><span class="metric-value">87.1<span class="metric-unit">%</span></span></td>
+            <th scope="row">SAM3D + FP</th>
+            <td>20.9%</td>
+            <td>48.8%</td>
+            <td>1,121.9</td>
           </tr>
           <tr>
-            <th scope="row">Mean object drift</th>
-            <td><span class="metric-value">79.6<span class="metric-unit"> mm</span></span></td>
-            <td class="metric-primary"><span class="metric-value">45.3<span class="metric-unit"> mm</span></span></td>
+            <th scope="row">SimFoundry<span class="metric-detail">Strongest baseline</span></th>
+            <td>30.3%</td>
+            <td>73.2%</td>
+            <td>79.6</td>
+          </tr>
+          <tr>
+            <th scope="row">PCR</th>
+            <td>21.8%</td>
+            <td>46.6%</td>
+            <td>682.3</td>
+          </tr>
+          <tr>
+            <th scope="row">Picasso</th>
+            <td>14.1%</td>
+            <td>56.8%</td>
+            <td>5,307.9</td>
+          </tr>
+          <tr class="metric-primary">
+            <th scope="row">Support2Sim</th>
+            <td>51.7%<span class="metric-gain">+21.4 pp vs. SimFoundry</span></td>
+            <td>87.1%</td>
+            <td>45.3</td>
           </tr>
         </tbody>
       </table>

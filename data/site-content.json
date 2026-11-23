@@ -19,30 +19,48 @@
   },
   "results": {
     "intro": "50 scenes across MessyKitchens, YCB-Video, Picasso, and HyperSim.",
-    "metrics": [
+    "note": "All methods are evaluated using the same reference camera, source masks, and intended-support pairs over 10 seconds. Support realization measures load-bearing object pairs in the inferred graph. FP denotes FoundationPose, and PCR denotes Physics-Constrained Real2Sim.",
+    "benchmark": [
       {
-        "label": "Source-mask IoU",
-        "baseline": "30.3",
-        "value": "51.7",
-        "unit": "%",
-        "detail": "After 10 seconds",
-        "gain": "+21.4 percentage points"
+        "method": "SAM3D",
+        "iou": "18.0%",
+        "supports": "42.1%",
+        "driftMm": "1,417.5"
       },
       {
-        "label": "Intended supports",
-        "baseline": "73.2",
-        "value": "87.1",
-        "unit": "%",
-        "detail": "Realization rate"
+        "method": "SAM3D + FP",
+        "iou": "20.9%",
+        "supports": "48.8%",
+        "driftMm": "1,121.9"
       },
       {
-        "label": "Mean object drift",
-        "baseline": "79.6",
-        "value": "45.3",
-        "unit": " mm"
+        "method": "SimFoundry",
+        "iou": "30.3%",
+        "supports": "73.2%",
+        "driftMm": "79.6",
+        "detail": "Strongest baseline"
+      },
+      {
+        "method": "PCR",
+        "iou": "21.8%",
+        "supports": "46.6%",
+        "driftMm": "682.3"
+      },
+      {
+        "method": "Picasso",
+        "iou": "14.1%",
+        "supports": "56.8%",
+        "driftMm": "5,307.9"
+      },
+      {
+        "method": "Support2Sim",
+        "iou": "51.7%",
+        "supports": "87.1%",
+        "driftMm": "45.3",
+        "primary": true,
+        "iouNote": "+21.4 pp vs. SimFoundry"
       }
-    ],
-    "note": "All methods are evaluated with the same reference camera, source masks, intended-support edges, and 10-second horizon. Support realization measures load-bearing object pairs in the inferred graph; it does not measure recovery of ground-truth contact locations."
+    ]
   },
   "rollouts": {
     "description": "Compare synchronized saved rollouts with the source photograph. Each method starts at release and runs for 10 seconds.",

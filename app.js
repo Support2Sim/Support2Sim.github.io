@@ -134,27 +134,21 @@
 
   function renderResults(value) {
     const data = object(value);
-    const metrics = list(data.metrics).map(object).filter((metric) =>
-      string(metric.label) && string(metric.baseline) && string(metric.value)
+    const benchmark = list(data.benchmark).map(object).filter((entry) =>
+      [entry.method, entry.iou, entry.supports, entry.driftMm].every((value) => string(value))
     );
-    const rows = metrics.map((metric) => {
-      const row = element("tr");
-      const label = element("th", "", metric.label);
-      label.scope = "row";
-      if (string(metric.detail)) label.append(element("span", "metric-detail", metric.detail));
-      row.append(label);
-      [metric.baseline, metric.value].forEach((value, index) => {
-        const cell = element("td", index === 1 ? "metric-primary" : "");
-        const number = element("span", "metric-value", value);
-        if (string(metric.unit)) number.append(element("span", "metric-unit", metric.unit));
-        cell.append(number);
-        if (index === 1 && string(metric.gain)) cell.append(element("span", "metric-gain", metric.gain));
-        row.append(cell);
-      });
+    const rows = benchmark.map((entry) => {
+      const row = element("tr", entry.primary === true ? "metric-primary" : "");
+      const method = element("th", "", entry.method);
+      method.scope = "row";
+      if (string(entry.detail)) method.append(element("span", "metric-detail", entry.detail));
+      const iou = element("td", "", entry.iou);
+      if (string(entry.iouNote)) iou.append(element("span", "metric-gain", entry.iouNote));
+      row.append(method, iou, element("td", "", entry.supports), element("td", "", entry.driftMm));
       return row;
     });
     if (rows.length) $("results-metric-rows").replaceChildren(...rows);
-    $("results-metrics").hidden = Array.isArray(data.metrics) && data.metrics.length === 0;
+    $("results-metrics").hidden = Array.isArray(data.benchmark) && data.benchmark.length === 0;
     setText("results-intro", data.intro);
     optionalText("results-note", data.note);
     renderPair("results-media", data);
