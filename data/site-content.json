@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "subtitle": "A single image. A simulation-ready scene.",
   "summary": "Support2Sim reconstructs simulation-ready scenes from a single RGB image. A support graph guides pose initialization, and short physics rollouts guide coarse-to-fine refinement. The system balances source fidelity, realization of inferred supports, and stability within bounded search budgets.",
   "hero": {
     "source": {
