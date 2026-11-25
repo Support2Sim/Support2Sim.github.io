@@ -1,6 +1,6 @@
 # Support2Sim project frontend
 
-Static, anonymous project page for **Support2Sim: Visually Faithful Real2Sim with Stable Object Supports**. No build step, packages, frameworks, analytics, remote fonts, or CDN dependencies. All frontend files live directly in this directory; there is no nested `site/` directory.
+Static project page for **Support2Sim: Visually Faithful Real2Sim with Stable Object Supports**. No build step, packages, frameworks, analytics, remote fonts, or CDN dependencies. All frontend files live directly in this directory; there is no nested `site/` directory.
 
 ## Files and integration
 
@@ -21,7 +21,6 @@ Use a JSON object with `schemaVersion: 1`. Every top-level content section is op
 ```json
 {
   "schemaVersion": 1,
-  "subtitle": "From one image to a scene that holds together.",
   "summary": "Support2Sim reconstructs a simulation scene from a single image, combining visual reconstruction with stable object supports. We evaluate source fidelity, support realization, and scene stability across 50 scenes from four datasets.",
   "hero": {
     "source": {
@@ -164,7 +163,7 @@ Use a JSON object with `schemaVersion: 1`. Every top-level content section is op
 
 | Field | Required for display | Behavior |
 | --- | --- | --- |
-| `subtitle`, `summary` | No | Override the corresponding static text; title and branding stay fixed. Plain text only. |
+| `summary` | No | Override the static system summary with plain text. |
 | `hero` | Both `source.src` and `simulation.src` | Two large adjacent panels. Source is an image; simulation can be an image or video. `autoplay: true` applies only to this video, only while reduced motion is off. Default is no autoplay. |
 | `results.benchmark[]` | `method`, `iou`, `supports`, `driftMm` as strings | Use one row per method. Include percentage signs with IoU and support rates. Optional fields are `detail`, `iouNote`, and `primary: true` for the highlighted row. Omit `benchmark` to use the static table. Use `[]` to hide it. |
 | `results.source`, `results.simulation` | Both `src` values | Optional large RGB/result pair below the measured results; same media format as the hero. |
@@ -206,7 +205,7 @@ The local component is loaded only on user action. The viewer uses `camera-contr
 
 ## Content boundaries
 
-Keep public copy and assets anonymous: no author names, institutions, email addresses, personal GitHub accounts, or submission status. No paper, arXiv, supplementary, or repository links are generated. Add no links to publications that have not been supplied and approved. The page does not alter or link itself from the paper. Aggregate measurements are the supplied results; representative examples must be identified through accurate captions, not treated as evidence for additional unmeasured claims.
+The author list, affiliation, and arXiv PDF link are set in `index.html`. The Code button is disabled pending release. Aggregate measurements use the supplied results, and captions identify the representative examples.
 
 ## Verification handoff
 

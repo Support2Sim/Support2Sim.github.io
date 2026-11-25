@@ -636,7 +636,6 @@
       console.info("Support2Sim: local media manifest unavailable; displaying the static overview.");
       return;
     }
-    setText("hero-subtitle", data.subtitle);
     setText("system-summary", data.summary);
     const sections = [
       () => renderPair("hero-media", data.hero, true),
